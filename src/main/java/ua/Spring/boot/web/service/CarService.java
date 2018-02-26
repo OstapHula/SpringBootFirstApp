@@ -9,4 +9,6 @@ public interface CarService {
 	void saveCar(Car car);
 	
 	List<Car> findAllCar();
+	
+	Car findCarByModel(String model);
 }

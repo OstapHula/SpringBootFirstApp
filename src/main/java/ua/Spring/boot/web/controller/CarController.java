@@ -17,24 +17,22 @@ import ua.Spring.boot.web.service.CarService;
 @Controller
 @RequestMapping("/car")
 public class CarController {
-
 	@Autowired
 	private CarService carService;
-	
+
 	@GetMapping("/create")
 	public String showAddCarForm(Model model) {
-		model.addAttribute("carModel", new Car());
+		model.addAttribute("carModel",new Car());
 		return "car/create";
 	}
 	
 	@PostMapping("/create")
-	public String saveCar(@ModelAttribute("carModel") @Valid Car car,
-			BindingResult result) {
+	public String saveCar(@ModelAttribute("carModel") @Valid Car car, BindingResult result) {
 		if(result.hasErrors()) {
 			return "car/create";
 		}
 		carService.saveCar(car);
 		return "redirect:/";
-	}
-
+	} 
 }
+
